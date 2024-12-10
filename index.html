@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar Panel Questionnaire</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="form-container">
+    <h2>Calculate your premium!</h2>
+    <div id="question-container">
+      <!-- Questions will be dynamically inserted here -->
+    </div>
+  </div>
+
+  <script>
+    // Dummy data for questions
+    const questions = [
+      {
+        question: "On which roof will the solar panels be installed?",
+        options: [
+          { text: "Sloped roof", icon: "🏠" },
+          { text: "Flat roof", icon: "🏢" },
+          { text: "Flat + sloped roof", icon: "🏡" },
+          { text: "Garden", icon: "🌳" },
+        ],
+      },
+      {
+        question: "What is the size of the area for installation?",
+        options: [
+          { text: "Small", icon: "📏" },
+          { text: "Medium", icon: "📐" },
+          { text: "Large", icon: "🏗️" },
+          { text: "Extra Large", icon: "🏢" },
+        ],
+      },
+      {
+        question: "Do you require installation assistance?",
+        options: [
+          { text: "Yes", icon: "👍" },
+          { text: "No", icon: "👎" },
+          { text: "Maybe", icon: "❓" },
+          { text: "Need Consultation", icon: "📞" },
+        ],
+      },
+    ];
+
+    let currentQuestion = 0;
+
+    const questionContainer = document.getElementById("question-container");
+
+    // Function to render a question
+    function renderQuestion(index) {
+      const questionData = questions[index];
+      questionContainer.innerHTML = `
+        <div class="question">
+          <p>${questionData.question}</p>
+          <div class="options">
+            ${questionData.options
+              .map(
+                (option, idx) =>
+                  `<button onclick="handleOptionClick(${index}, ${idx})">
+                    <span class="icon">${option.icon}</span>
+                    <span class="text">${option.text}</span>
+                  </button>`
+              )
+              .join("")}
+          </div>
+        </div>
+      `;
+    }
+
+    // Handle option click
+    function handleOptionClick(questionIndex, optionIndex) {
+      const questionElement = document.querySelector(".question");
+      questionElement.classList.add("fade-out");
+
+      setTimeout(() => {
+        if (questionIndex < questions.length - 1) {
+          currentQuestion++;
+          renderQuestion(currentQuestion);
+        } else {
+          renderSubmitButton();
+        }
+      }, 300); // Matches the CSS transition duration
+    }
+
+    // Render submit button
+    function renderSubmitButton() {
+      questionContainer.innerHTML = `
+        <div class="question">
+          <p>Thank you for completing the questionnaire!</p>
+          <button class="submit-button" onclick="handleSubmit()">Submit</button>
+        </div>
+      `;
+    }
+
+    // Handle form submission
+    function handleSubmit() {
+      alert("Form submitted successfully!");
+    }
+
+    // Initial render
+    renderQuestion(currentQuestion);
+  </script>
+</body>
+</html>
