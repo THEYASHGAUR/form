@@ -42,12 +42,7 @@ body {
   background-color: red;
 }
 
-.form-container .header span {
-  background-color: red;
-  height: 10px;
-  width: 100px;
-  /* font-size: 18px; */
-}
+
 
 .form-container p {
   color: #333;
@@ -61,8 +56,13 @@ body {
   grid-template-columns: 1fr 1fr;
   gap: 15px;
 }
+.options button img.icon {
+  width: 40px; /* Adjust as needed */
+  height: 40px;
+  margin-bottom: 10px;
+}
 
-.options button {
+ .options button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,7 +70,7 @@ body {
   background: #f7f9fc;
   color: #000000;
   border: 1px solid #dde6f2;
-  padding: 20px;
+  padding: 15px;
   border-radius: 5px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;

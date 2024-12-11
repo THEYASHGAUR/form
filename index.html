@@ -27,28 +27,29 @@
             {
                 question: "On which roof will the solar panels be installed?",
                 options: [
-                    { text: "Sloped roof", icon: "🏠" },
-                    { text: "Flat roof", icon: "🏢" },
-                    { text: "Flat + sloped roof", icon: "🏡" },
-                    { text: "Garden", icon: "🌳" },
+                    { text: "Sloped roof", icon: "./assets/home.png" },
+                    { text: "Flat roof", icon: "./assets/buildings.png" },
+                    { text: "Flat + sloped roof", icon: "./assets/home.png" },
+                    { text: "Garden", icon: "./assets/garden.png" },
+
                 ],
             },
             {
                 question: "What is the size of the area for installation?",
                 options: [
-                    { text: "Small", icon: "📏" },
-                    { text: "Medium", icon: "📐" },
-                    { text: "Large", icon: "🏗️" },
-                    { text: "Extra Large", icon: "🏢" },
+                    { text: "Small", icon: "./assets/solar-panel.png" },
+                    { text: "Medium", icon: "./assets/solar-panel.png" },
+                    { text: "Large", icon: "./assets/solar-panel.png" },
+                    { text: "Extra Large", icon: "./assets/solar-panel.png" },
                 ],
             },
             {
                 question: "Do you require installation assistance?",
                 options: [
-                    { text: "Yes", icon: "👍" },
-                    { text: "No", icon: "👎" },
-                    { text: "Maybe", icon: "❓" },
-                    { text: "Need Consultation", icon: "📞" },
+                    { text: "Yes", icon: "./assets/thumbs-up.png" },
+                    { text: "No", icon: "./assets/negative-vote.png" },
+                    { text: "Maybe", icon: "./assets/question.png" },
+                    { text: "Need Consultation", icon: "./assets/telephone.png" },
                 ],
             },
         ];
@@ -68,7 +69,7 @@
                     .map(
                         (option, idx) =>
                             `<button onclick="handleOptionClick(${index}, ${idx})">
-                    <span class="icon">${option.icon}</span>
+                    <img src="${option.icon}" alt="${option.text}" class="icon">
                     <span class="text">${option.text}</span>
                   </button>`
                     )
