@@ -7,7 +7,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,300;1,14..32,300&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,300;1,14..32,300&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
     <title>Solar Panel Questionnaire</title>
     <!-- Link to external stylesheet -->
     <link rel="stylesheet" href="styles.css">
@@ -22,7 +24,7 @@
                 <h4>Calculate your premium!</h4>
                 <div class="line-box">
                     <div class="line"></div>
-                </div> 
+                </div>
             </div>
 
             <div id="question-container">
@@ -44,13 +46,15 @@
                 <div class="form-content">
                     <img src="./assets/family.jpg" alt="Family" class="form-image">
                     <form id="eligibility-form" onsubmit="handleSubmit(event)">
-                        <div class="input-group">
-                            <input type="text" placeholder="Name" required>
-                            <input type="text" placeholder="Surname" required>
-                        </div>
-                        <div class="input-group">
-                            <input type="tel" placeholder="Phone" required>
-                            <input type="text" placeholder="Postcode" required>
+                        <div class="input-group-container">
+                            <div class="input-group">
+                                <input type="text" placeholder="Name" required>
+                                <input type="text" placeholder="Surname" required>
+                            </div>
+                            <div class="input-group">
+                                <input type="tel" placeholder="Phone" required>
+                                <input type="text" placeholder="Postcode" required>
+                            </div>
                         </div>
                         <div class="submit-button-container">
                             <button type="submit" class="submit-button">Find out now!</button>
@@ -105,14 +109,14 @@
                         <p>${questionData.question}</p>
                         <div class="options">
                             ${questionData.options
-                                .map(
-                                    (option, idx) => `
+                        .map(
+                            (option, idx) => `
                                     <button onclick="handleOptionClick(${index}, ${idx})">
                                         <img src="${option.icon}" alt="${option.text}" class="icon">
                                         <span class="text">${option.text}</span>
                                     </button>`
-                                )
-                                .join("")}
+                        )
+                        .join("")}
                         </div>
                     </div>
                 `;
@@ -148,27 +152,27 @@
 
             // green flag animation
             // Function to initialize buttons
-                function initializeButtons() {
+            function initializeButtons() {
                 const buttons = document.querySelectorAll('.options button');
                 buttons.forEach(button => {
                     button.addEventListener('click', () => {
-                    buttons.forEach(btn => btn.classList.remove('selected'));
-                    button.classList.add('selected');
+                        buttons.forEach(btn => btn.classList.remove('selected'));
+                        button.classList.add('selected');
                     });
                 });
-                }
+            }
 
-                // Call this function after each page load/navigation
-                initializeButtons();
+            // Call this function after each page load/navigation
+            initializeButtons();
 
-                // If you're using any routing or page transition events, add it there too
-                // For example with a custom event:
-                document.addEventListener('pageLoaded', initializeButtons);
+            // If you're using any routing or page transition events, add it there too
+            // For example with a custom event:
+            document.addEventListener('pageLoaded', initializeButtons);
 
 
-                // handle submit button click
-                function handleSubmit(event) {
-            // Prevent default form submission
+            // handle submit button click
+            function handleSubmit(event) {
+                // Prevent default form submission
                 event.preventDefault();
 
                 // Capture input values (if you need them)
@@ -193,7 +197,7 @@
                         </div>
                     </div>
                 `;
-        }
+            }
 
         </script>
     </div>
