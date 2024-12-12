@@ -16,7 +16,6 @@ body {
   width: 100%;
   max-width: 400px;
   padding: 20px;
-  
 }
 
 .hidden {
@@ -95,8 +94,9 @@ body {
 
 .options {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  /* grid-template-columns: 1fr 1fr; */
+  grid-template-columns: 50% 50%;
+  /* gap: 15px; */
 }
 
 .options button {
@@ -114,7 +114,18 @@ body {
   transition: all 0.3s;
   font-size: 14px;
   height: 120px;
+  margin-bottom: 15px;
+  margin-right: 15px;
 }
+
+.options button:nth-child(2n){
+  margin-right: 0;
+}
+
+.options button:nth-last-child(-n+2){
+  margin-bottom: 0;
+}
+
 .options button.selected::after {
   content: '';
   position: absolute;
@@ -151,7 +162,6 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  
 }
 #eligibility-container .header h4 {
   color: #000;
@@ -190,25 +200,27 @@ body {
 .input-group {
   display: flex;
   flex-direction: column;  /* Stack inputs vertically on mobile */
-  /* gap: 15px; */
-  /* margin-bottom: 20px; */
+  gap: 15px;
+  margin-bottom: 20px;
   width: 100%;  /* Take full width of container */
   max-width: 270px;  /* Maximum width on larger screens */
   margin-left: auto;
   margin-right: auto;
-  /* padding: 0 15px;   */
+  padding: 0 15px;  /* Add some padding on the sides */
 }
 
 .input-group input {
   width: 100%; 
   height: 35px;
-  /* margin: 0px 15px; */
-  /* padding: 12px; */
+  padding: 12px;
   background: none;
   font-size: 14px;  /* Better size for mobile */
   border: 1.3px solid #000;
   border-radius: 5px;
-  box-sizing: border-box;  /* Include padding in width calculation */
+}
+
+.input-group input:first-of-type{
+  margin-right: 15px;
 }
 
 .input-group input:focus {
@@ -222,7 +234,7 @@ body {
     flex-direction: row;  /* Align inputs horizontally on desktop */
     padding: 0;  /* Remove padding on desktop */
   }
-  
+
   .input-group input {
     flex: 1;  /* Allow inputs to grow equally */
   }
@@ -293,10 +305,10 @@ body {
 /* Optional: Add animation for smoother transition */
 @keyframes fadeOut {
   from {
-      opacity: 1;
+    opacity: 1;
   }
   to {
-      opacity: 0;
+    opacity: 0;
   }
 }
 
@@ -310,9 +322,13 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  /* gap: 10px; */
   font-weight: 500;
   margin-bottom: 15px;
+}
+
+.tick img{
+  margin-right: 10px;
 }
 
 .final-message {
