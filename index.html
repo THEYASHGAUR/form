@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,300;1,14..32,300&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>Solar Panel Questionnaire</title>
     <!-- Link to external stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
 </head>
 
 <body>
@@ -116,6 +116,8 @@
                         </div>
                     </div>
                 `;
+                initializeButtons();
+                
             }
 
             function handleOptionClick(questionIndex) {
@@ -159,7 +161,6 @@
                 }
 
                 // Call this function after each page load/navigation
-                initializeButtons();
 
                 // If you're using any routing or page transition events, add it there too
                 // For example with a custom event:
