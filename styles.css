@@ -145,7 +145,7 @@ body {
 /* -------------------------------------- */
 /* Eligibility Form */
 #eligibility-container {
-  height: 550px;
+  height: auto;
 }
 #eligibility-container .header {
   display: flex;
