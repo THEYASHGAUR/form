@@ -144,14 +144,24 @@ body {
 
 /* -------------------------------------- */
 /* Eligibility Form */
+#eligibility-container {
+  height: 550px;
+}
+#eligibility-container .header {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  
+}
 #eligibility-container .header h4 {
   color: #000;
   font-family: Inter , sans-serif;
   line-height: 24px;
   font-size: 29px;
   font-weight: 600;
-  
+  margin-top: 14px;
 }
+
 
 #eligibility-container .header .line-box .line {
   background-color: #ff0000;
@@ -164,8 +174,10 @@ body {
 
 .form-image {
   width: 280px;
-  height: auto;
+  height: 181px;
   margin-bottom: 20px;
+  border-radius: 6px;
+  box-shadow: 0px 5px 5px #b0afaf;
 }
 
 .input-group {
@@ -181,10 +193,12 @@ body {
 }
 
 .input-group input {
-  width: 100%;  /* Take full width of container */
+  width: 100%; 
+  height: 35px;
   padding: 12px;
-  font-size: 16px;  /* Better size for mobile */
-  border: 1px solid #ddd;
+  background: none;
+  font-size: 14px;  /* Better size for mobile */
+  border: 1.3px solid #000;
   border-radius: 5px;
   box-sizing: border-box;  /* Include padding in width calculation */
 }
@@ -211,7 +225,6 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 20px;
-  /* background-color: red; */
   height: 60px;
 }
 
@@ -223,7 +236,9 @@ body {
   font-size: 18px;
   line-height: 17.6px;
   color: #000;
-  background-color: #F47B3D;
+  background: linear-gradient(to right, #F47B3D, #f99f84);
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
   border: none;
   border-radius: 5px;
   cursor: pointer;
