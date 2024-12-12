@@ -174,7 +174,7 @@ body {
   gap: 15px;
   margin-bottom: 20px;
   width: 100%;  /* Take full width of container */
-  max-width: 300px;  /* Maximum width on larger screens */
+  max-width: 270px;  /* Maximum width on larger screens */
   margin-left: auto;
   margin-right: auto;
   padding: 0 15px;  /* Add some padding on the sides */
