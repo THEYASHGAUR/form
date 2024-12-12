@@ -170,23 +170,42 @@ body {
 
 .input-group {
   display: flex;
-  gap: 10px;
-  margin-bottom: 15px;
+  flex-direction: column;  /* Stack inputs vertically on mobile */
+  gap: 15px;
+  margin-bottom: 20px;
+  width: 100%;  /* Take full width of container */
+  max-width: 300px;  /* Maximum width on larger screens */
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 15px;  /* Add some padding on the sides */
 }
 
 .input-group input {
-  flex: 1;
-  padding: 10px;
-  font-size: 1rem;
-  width: 50px;
+  width: 100%;  /* Take full width of container */
+  padding: 12px;
+  font-size: 16px;  /* Better size for mobile */
   border: 1px solid #ddd;
   border-radius: 5px;
+  box-sizing: border-box;  /* Include padding in width calculation */
 }
 
 .input-group input:focus {
   border-color: orange;
   outline: none;
 }
+
+/* Media query for larger screens */
+@media screen and (min-width: 768px) {
+  .input-group {
+    flex-direction: row;  /* Align inputs horizontally on desktop */
+    padding: 0;  /* Remove padding on desktop */
+  }
+  
+  .input-group input {
+    flex: 1;  /* Allow inputs to grow equally */
+  }
+}
+
 .submit-button-container {
   display: flex;
   align-items: center;
