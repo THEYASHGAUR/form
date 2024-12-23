@@ -1,208 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,300;1,14..32,300&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-    <title>Solar Panel Questionnaire</title>
-    <!-- Link to external stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Solar Panels on monthly basis? We can do it!</title>
 </head>
-
 <body>
-    <div class="container">
-        <!-- Main container for the form -->
-        <div class="form-container">
-            <!-- Header section with title - only shown during questions -->
-            <div id="premium-header" class="header">
-                <h4>Calculate your premium!</h4>
-                <div class="line-box">
-                    <div class="line"></div>
-                </div>
-            </div>
-
-            <div id="question-container">
-                <!-- Questions will be dynamically inserted here by JavaScript -->
-            </div>
-
-            <div id="eligibility-container" class="hidden">
-                <div class="header">
-                    <h4>Are you eligible?</h4>
-                    <div class="line-box">
-                        <div class="line"></div>
-                    </div>
-                    <div class="tick">
-                        <img src="./assets/tick.png" alt="tick">
-                        <p>We will figure it out for you.</p>
-                    </div>
-                </div>
-
-                <div class="form-content">
-                    <img src="./assets/family.jpg" alt="Family" class="form-image">
-                    <form id="eligibility-form" onsubmit="handleSubmit(event)">
-                        <div class="input-group-container">
-                            <div class="input-group">
-                                <input type="text" placeholder="Name" required>
-                                <input type="text" placeholder="Surname" required>
-                            </div>
-                            <div class="input-group">
-                                <input type="tel" placeholder="Phone" required>
-                                <input type="text" placeholder="Postcode" required>
-                            </div>
-                        </div>
-                        <div class="submit-button-container">
-                            <button type="submit" class="submit-button">Find out now!</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+    <div class="calculator-container">
+        <h1>Solar Panels on monthly basis? We can do it!</h1>
+        <div class="subtitle"> <span class="green">Green loan</span> for solar panels: calculate your profits</div>
+        <div class="question">How much do you pay for the current energy bill?</div>
+        
+        <div class="graph-container">
+            <svg id="graph" viewBox="0 0 600 200" preserveAspectRatio="none">
+                <path id="curve" fill="#2b6cb0" fill-opacity="0.2" stroke="#2b6cb0" stroke-width="2"></path>
+            </svg>
         </div>
 
-        <script>
-            // Data for the questionnaire
-            const questions = [
-                {
-                    question: "On which roof will the solar panels be installed?",
-                    options: [
-                        { text: "Sloped roof", icon: "./assets/home.png" },
-                        { text: "Flat roof", icon: "./assets/buildings.png" },
-                        { text: "Flat + sloped roof", icon: "./assets/flat+roof.png" },
-                        { text: "Garden", icon: "./assets/garden.png" },
-                    ],
-                },
-                {
-                    question: "What is the size of the area for installation?",
-                    options: [
-                        { text: "Small", icon: "./assets/small.png" },
-                        { text: "Medium", icon: "./assets/medium.png" },
-                        { text: "Large", icon: "./assets/large.png" },
-                        { text: "Extra Large", icon: "./assets/extra-large.png" },
-                    ],
-                },
-                {
-                    question: "Do you require installation assistance?",
-                    options: [
-                        { text: "Yes", icon: "./assets/up.png" },
-                        { text: "No", icon: "./assets/down.png" },
-                        { text: "Maybe", icon: "./assets/question_mark.png" },
-                        { text: "Need Consultation", icon: "./assets/phone.png" },
-                    ],
-                },
-            ];
+        <div class="slider-container">
+            <input type="range" min="0" max="300" value="156" class="slider" id="priceSlider">
+            <div class="slider-value">$<span id="sliderValue">156</span></div>
+        </div>
 
-            let currentQuestion = 0;
-            const questionContainer = document.getElementById("question-container");
-            const eligibilityContainer = document.getElementById("eligibility-container");
-            const premiumHeader = document.getElementById("premium-header");
-            const formContainer = document.querySelector(".form-container");
+        <button class="next-button">Next →</button>
 
-            function renderQuestion(index) {
-                const questionData = questions[index];
-                questionContainer.innerHTML = `
-                    <div class="question">
-                        <p>${questionData.question}</p>
-                        <div class="options">
-                            ${questionData.options
-                        .map(
-                            (option, idx) => `
-                                    <button onclick="handleOptionClick(${index}, ${idx})">
-                                        <img src="${option.icon}" alt="${option.text}" class="icon">
-                                        <span class="text">${option.text}</span>
-                                    </button>`
-                        )
-                        .join("")}
-                        </div>
-                    </div>
-                `;
-                initializeButtons();
-                
-            }
-
-            function handleOptionClick(questionIndex) {
-                const questionElement = document.querySelector(".question");
-                questionElement.classList.add("fade-out");
-
-                setTimeout(() => {
-                    if (questionIndex < questions.length - 1) {
-                        currentQuestion++;
-                        renderQuestion(currentQuestion);
-                    } else {
-                        showEligibilityForm();
-                    }
-                }, 700);
-            }
-
-            function showEligibilityForm() {
-                questionContainer.classList.add("hidden");
-                premiumHeader.classList.add("hidden"); // Hide the premium header
-                eligibilityContainer.classList.remove("hidden");
-            }
-
-            const eligibilityForm = document.getElementById("eligibility-form");
-            // eligibilityForm.addEventListener("submit", (event) => {
-            //     event.preventDefault();
-            //     alert("Thank you for submitting your details!");
-            // });
-
-            renderQuestion(currentQuestion);
-
-            // green flag animation
-            // Function to initialize buttons
-            function initializeButtons() {
-                const buttons = document.querySelectorAll('.options button');
-                buttons.forEach(button => {
-                    button.addEventListener('click', () => {
-                        buttons.forEach(btn => btn.classList.remove('selected'));
-                        button.classList.add('selected');
-                    });
-                });
-            }
-
-                // Call this function after each page load/navigation
-                initializeButtons();
-
-            // If you're using any routing or page transition events, add it there too
-            // For example with a custom event:
-            document.addEventListener('pageLoaded', initializeButtons);
-
-
-            // handle submit button click
-            function handleSubmit(event) {
-                // Prevent default form submission
-                event.preventDefault();
-
-                // Capture input values (if you need them)
-                const nameInput = document.querySelector('input[placeholder="Name"]').value;
-                const surnameInput = document.querySelector('input[placeholder="Surname"]').value;
-                const phoneInput = document.querySelector('input[placeholder="Phone"]').value;
-                const postcodeInput = document.querySelector('input[placeholder="Postcode"]').value;
-
-                // Optional: Log the data to check (remove in production)
-                console.log("Submitted Details:", { nameInput, surnameInput, phoneInput, postcodeInput });
-
-                // Replace the form container with the "Thank you" message
-                const formContainer = document.querySelector(".form-container");
-                formContainer.innerHTML = `
-                    <div class="form-content">
-                        <div class="final-message">
-                            
-                            <p>Thank you for completing the Questionnarie!</p>
-                            <div class="submit-button-container">
-                                <p>Submitted Successfully!</p>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }
-
-        </script>
+        <div class="pagination">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
     </div>
-</body>
 
+    <script>
+        const slider = document.getElementById('priceSlider');
+        const sliderValue = document.getElementById('sliderValue');
+        const curve = document.getElementById('curve');
+
+        function updateGraph(value) {
+            const width = 600;
+            const height = 200;
+            const points = [];
+            
+            // Generate curve points based on slider value
+            for (let x = 0; x <= width; x += 10) {
+                const progress = x / width;
+                let y = height - (Math.pow(progress, 2) * value);
+                y = Math.max(y, 0);
+                points.push(`${x},${y}`);
+            }
+            
+            // Complete the path by adding bottom corners
+            points.push(`${width},${height}`);
+            points.push(`0,${height}`);
+            
+            curve.setAttribute('d', `M ${points.join(' L ')} Z`);
+        }
+
+        slider.addEventListener('input', (e) => {
+            const value = e.target.value;
+            sliderValue.textContent = value;
+            updateGraph(value);
+            
+            // Update slider thumb position
+            const percent = (value - slider.min) / (slider.max - slider.min);
+            const thumbWidth = 50;
+            const sliderWidth = slider.offsetWidth - thumbWidth;
+            const offset = percent * sliderWidth + (thumbWidth / 2);
+            
+            document.querySelector('.slider-value').style.left = `${offset}px`;
+        });
+
+        // Initial graph render
+        updateGraph(156);
+    </script>
+</body>
 </html>
