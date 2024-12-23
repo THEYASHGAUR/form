@@ -8,7 +8,7 @@ body {
   background-color: #a8a2a2;
 }
 
-.calculator-container , .energy-container {
+.calculator-container , .energy-container , .form-container {
   /* width: 100%; */
   max-width: 412px;
   height: 456px;
@@ -243,3 +243,66 @@ svg {
 /* .decrement-btn:hover , .increment-btn:hover {
   background-color: #2980b9;
 } */
+
+/* 3rd page */
+.form-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-description{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.form{
+  width: 100%;
+}
+.form-title{
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.form-field-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.input-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#input-name,#input-surname,#input-email,#input-number,#input-postcode{
+  border-color: #18415e;
+  border-width: 1px;
+  color: #18415e;
+  height: 34.79px;
+  width: 135px;
+  border-radius: 5px;
+  padding: 0% 5%;
+}
+
+#input-email{
+  width: 90%;
+}
+
+#input-name::placeholder,#input-surname::placeholder,#input-email::placeholder,#input-number::placeholder,#input-postcode::placeholder{
+  color: #18415e;
+
+}
+.form-description-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1px;
+  
+}
+
+.form-container .button-container button{
+  margin-top: 30px;
+}
