@@ -48,11 +48,25 @@
   <div class="energy-container" id="hide">
     <h1>Solar Panels on monthly basis? We can do it!</h1>
     <div class="subtitle"> <span class="green">Green loan</span> for solar panels: calculate your profits</div>
-    
+
     <div class="energy-consumption">
       <p class="energy-consumption-text">Energy Consumption</p>
       <p class="energy-consumption-subtext">Wat is uw jaarlijkse energievebruik?</p>
+
+      <div class="energySlider">
+        <input type="range" id="energyslider" class="energyslider" min="0" max="500" value="146">
+        <div class="value-display">
+          <span id="energyValue">146kW</span>
+          <div>
+            <button class="decrement-btn" onclick="decrementValue()">-</button>
+            <button class="increment-btn" onclick="incrementValue()">+</button>
+          </div>
+        </div>
+      </div>
     </div>
+
+
+
 
     <div class="button-container">
       <button onclick="secondNextButton()" class="next-button">Next →</button>
@@ -63,8 +77,8 @@
       <div class="dot"></div>
       <div class="dot"></div>
     </div>
-    
-  </div> 
+
+  </div>
 
   <script>
     const slider = document.getElementById('priceSlider');
@@ -140,6 +154,24 @@
 
     // Initial graph render
     updateGraph(156);
+
+
+    // 2nd page
+    const secondslider = document.getElementById('slider');
+    const energyValue = document.getElementById('energyValue');
+
+    slider.addEventListener('input', () => {
+      energyValue.textContent = slider.value;
+    });
+
+    function incrementValue() {
+      let currentValue = parseInt(slider.value);
+      if (currentValue < slider.max) {
+        currentValue += 1;
+        slider.value = currentValue;
+        energyValue.textContent = currentValue;
+      }
+    }
   </script>
 </body>
 
