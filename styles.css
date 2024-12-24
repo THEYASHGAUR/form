@@ -208,7 +208,7 @@ svg {
   align-items: center;
 }
 
-.energyslider {
+.energySlider {
   -webkit-appearance: none;
   appearance: none;
   width: 50%;
@@ -221,7 +221,7 @@ svg {
 }
 
 /* Style the thumb */
-.energyslider::-webkit-slider-thumb {
+.energySlider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   width: 20px;
@@ -232,7 +232,7 @@ svg {
   cursor: pointer;
 }
 
-.energyslider::-moz-range-thumb {
+.energySlider::-moz-range-thumb {
   width: 20px;
   height: 20px;
   background: white;
@@ -265,6 +265,7 @@ svg {
 
 .decrement-btn , .increment-btn {
   color: white;
+  cursor: pointer;
   border: none;
   background-color: #6AC7CC;
   border-radius: 8px;
