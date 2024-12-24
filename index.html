@@ -109,8 +109,51 @@
       <div class="dot active"></div>
       <div class="dot"></div>
     </div>
+  </div>
 
-
+  <!-- 4th page  -->
+  <div class="bill-container" id="hide">
+    <div class="header">
+      Solar Panels on <span>monthly basis?</span> We can do it!
+    </div>
+    <div class="subtitle"> <span class="green">Green loan</span> for solar panels: calculate your profits</div>
+    <div class="products">
+      <div class="product">
+        <span>🔹 Solar Panel: 8x Jinko Glas\Glas</span>
+        <div>
+          <button>-</button>
+          <span>8</span>
+          <button>+</button>
+        </div>
+      </div>
+      <div class="product">
+        <span>🔹 Inverter: Growatt 4.5 KTL</span>
+        <button>✖</button>
+      </div>
+      <div class="product">
+        <span>🔹 Home battery: Growatt 5kw</span>
+        <button>Yes</button>
+        <button>No</button>
+      </div>
+    </div>
+    <div class="summary">
+      <p><b>300 euros saved in 30 years!</b></p>
+      <p>Green loan!</p>
+      <p>Monthly cost now: $158 | $160</p>
+      <p>After 7 years: Still $158/maand | $0/month: Your power</p>
+      <p>Total amount: 30 years = 56.880 euro | 7 jaar = 7500</p>
+      <p><b>Save in 30 years: 49.380 euro</b></p>
+      <p>Cover your investment in: 7 jaar | Monthly cost: 160 euro</p>
+    </div>
+    <div class="cta">
+      <button>Request Quota</button>
+    </div>
+    <div class="pagination">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span class="active"></span>
+    </div>
   </div>
 
 
@@ -177,6 +220,7 @@
     const calculatorContainer = document.querySelector('.calculator-container');
     const energyContainer = document.querySelector('.energy-container');
     const formContainer = document.querySelector('.form-container');
+    const billContainer = document.querySelector('.bill-container');
 
 
 
@@ -184,14 +228,19 @@
       // Add your next button logic here
       calculatorContainer.style.display = 'none';
       energyContainer.style.display = 'block';
-
     }
     function secondNextButton() {
       // Add your next button logic here
       energyContainer.style.display = 'none';
       formContainer.style.display = 'block';
-
     }
+
+    function thirdNextButton() {
+      // Add your next button logic here
+      formContainer.style.display = 'none';
+      billContainer.style.display = 'block';
+    }
+
 
     // Initial graph render
     updateGraph(156);

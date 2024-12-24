@@ -8,7 +8,7 @@ body {
   /* background-color: #a8a2a2; */
 }
 
-.calculator-container , .energy-container , .form-container {
+.calculator-container , .energy-container , .form-container, .bill-container {
   /* width: 100%; */
   max-width: 412px;
   height: fit-content;
@@ -209,8 +209,36 @@ body {
 }
 
 .energyslider {
-  flex: 1;
-  margin-right: 10px;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 50%;
+  height: 2px !important;
+  border-radius: 5px;
+  outline: none;
+  background: linear-gradient(to right, white, #42A5A8);
+  cursor: pointer;
+  margin: 0px 0px 20px 20px;
+}
+
+/* Style the thumb */
+.energyslider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.energyslider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 2px solid white;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .value-display {
@@ -223,6 +251,7 @@ body {
   width: 150px;
   border-radius: 18px;
   font-size: 1.2rem;
+  margin-left: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -307,4 +336,102 @@ body {
 
 .form-container .button-container button{
   margin-top: 30px;
+}
+
+
+/* 4th page */
+.bill-container {
+  width: 90%;
+  max-width: 412px;
+  background: #031A2D;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+  /* background: #113f67; */
+  padding: 16px;
+  text-align: center;
+  font-size: 1.2em;
+  color: #fff;
+}
+
+.header span {
+  color: #71BAF6;
+}
+
+.bill-container .subtitle {
+  text-align: center;
+  color: #fff;
+  font-size: 0.9em;
+}
+
+.products {
+  padding: 16px;
+}
+
+.product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.product span {
+  font-size: 0.9em;
+}
+
+.product button {
+  background: #00dbd0;
+  color: black;
+  border: none;
+  border-radius: 8px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.summary {
+  background: white;
+  color: black;
+  border-radius: 16px;
+  padding: 16px;
+  margin: 16px;
+}
+
+.summary p {
+  margin: 8px 0;
+}
+
+.cta {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.cta button {
+  background: #00dbd0;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1em;
+  cursor: pointer;
+}
+
+.pagination {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.pagination span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background: #555;
+  border-radius: 50%;
+}
+
+.pagination .active {
+  background: #00dbd0;
 }
