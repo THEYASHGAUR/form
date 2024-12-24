@@ -53,10 +53,10 @@
       <p class="energy-consumption-text">Energy Consumption</p>
       <p class="energy-consumption-subtext">Wat is uw jaarlijkse energievebruik?</p>
 
-      <div class="energySlider">
-        <input type="range" id="energyslider" class="energyslider" min="0" max="500" value="146">
+      <div class="energySlider-container">
+        <input type="range" id="energySlider" class="energySlider" min="0" max="500" value="146">
         <div class="value-display">
-          <span id="energyValue">146kW</span>
+          <span id="energyValue">146 kWh</span>
           <div>
             <button class="decrement-btn" onclick="decrementValue()">-</button>
             <button class="increment-btn" onclick="incrementValue()">+</button>
@@ -279,19 +279,29 @@
 
 
     // 2nd page
-    const secondslider = document.getElementById('slider');
+    const energySlider = document.getElementById('energySlider');
     const energyValue = document.getElementById('energyValue');
 
-    slider.addEventListener('input', () => {
-      energyValue.textContent = slider.value;
+    energySlider.addEventListener('input', (e) => {
+      const value = e.target.value;
+      energyValue.innerHTML = `${value} kWh`;
     });
 
     function incrementValue() {
-      let currentValue = parseInt(slider.value);
-      if (currentValue < slider.max) {
+      let currentValue = parseInt(energySlider.value);
+      if (currentValue < energySlider.max) {
         currentValue += 1;
-        slider.value = currentValue;
-        energyValue.textContent = currentValue;
+        energySlider.value = currentValue;
+        energyValue.textContent = `${currentValue} kWh`;
+      }
+    }
+
+    function decrementValue(){
+      let currentValue = parseInt(energySlider.value);
+      if (currentValue > energySlider.min) {
+        currentValue -= 1;
+        energySlider.value = currentValue;
+        energyValue.textContent = `${currentValue} kWh`;
       }
     }
   </script>
